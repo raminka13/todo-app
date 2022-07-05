@@ -9,5 +9,8 @@ node_modules/
 
 #Ignore Local Linters
 .hintrc
-.stylelintrc.jason
+.stylelintrc.json
 .eslintrc.json
+
+#Ignore dist
+dist/
