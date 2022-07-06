@@ -1,12 +1,44 @@
-import _ from 'lodash';
 import './style.css';
 
-function component() {
-  const element = document.createElement('div');
+const taskArr = [
+  {
+    description: 'Buy Milk',
+    completed: true,
+    index: 1,
+  },
+  {
+    description: 'Buy Eggs',
+    completed: false,
+    index: 2,
+  },
+  {
+    description: 'Buy Orange Juice',
+    completed: false,
+    index: 3,
+  },
+];
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+function addTasktoList(task) {
+  const taskCtn = document.getElementById('task-list');
+  const taskLi = document.createElement('li');
 
-  return element;
+  taskCtn.appendChild(taskLi);
+  taskLi.className = 'task';
+
+  const checkBox = document.createElement('input');
+  const taskDesc = document.createElement('p');
+  const delTaskbtn = document.createElement('button');
+
+  taskLi.appendChild(checkBox);
+  checkBox.className = 'checkbox';
+  checkBox.setAttribute('type', 'checkbox');
+  checkBox.checked = task.completed;
+
+  taskLi.appendChild(taskDesc);
+  taskDesc.textContent = task.description;
+
+  taskLi.appendChild(delTaskbtn);
+  delTaskbtn.textContent = '🗑';
 }
 
-document.body.appendChild(component());
+taskArr.forEach(addTasktoList);
