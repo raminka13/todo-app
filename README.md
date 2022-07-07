@@ -4,7 +4,8 @@
 
 # To Do List ⚙️
 > This is a To Do list App to practice Javascript and Webpack deployment.
-
+# Live Demo ⚙️
+- GitHub Pages: [DEMO](https://raminka13.github.io/todo-app/dist/)
 
 ## Tech ⌘⇧
 - **HTML & CSS best practices:** Correct use of tags, elements, properties and syntax.
@@ -20,7 +21,7 @@
 
 ## Project Milestones
 - **Milestone 0 - project setup (0.5h)** ✅
-- **Milestone 1 - Add - Remove functions (1h)** 
+- **Milestone 1 - Add - Remove functions (1h)** ✅
 - **Milestone 2 - Dynamic content (5h)** 
 
 ## Show your support 🦾

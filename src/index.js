@@ -1,44 +1,32 @@
 import './style.css';
+import Task from './TaskClass.js';
+import UI from './UI.js';
+import Storage from './Storage.js';
 
-const taskArr = [
-  {
-    description: 'Buy Milk',
-    completed: true,
-    index: 1,
-  },
-  {
-    description: 'Buy Eggs',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Buy Orange Juice',
-    completed: false,
-    index: 3,
-  },
-];
+document.addEventListener('DOMContentLoaded', UI.displayTask);
 
-function addTasktoList(task) {
-  const taskCtn = document.getElementById('task-list');
-  const taskLi = document.createElement('li');
+document.querySelector('#form-section').addEventListener('submit', (e) => {
+  // Prevent submit
+  e.preventDefault();
 
-  taskCtn.appendChild(taskLi);
-  taskLi.className = 'task';
+  const description = document.getElementById('add-input').value;
+  const completed = false;
+  const taskId = Storage.getTask().length + 1;
 
-  const checkBox = document.createElement('input');
-  const taskDesc = document.createElement('p');
-  const delTaskbtn = document.createElement('button');
+  // Validation
+  if (description === '') {
+    alert('Please fill in all fields');
+  } else {
+    // Start a new Task
+    const task = new Task(description, completed, taskId);
 
-  taskLi.appendChild(checkBox);
-  checkBox.className = 'checkbox';
-  checkBox.setAttribute('type', 'checkbox');
-  checkBox.checked = task.completed;
+    // Add Task to UI
+    UI.addTasktoList(task);
 
-  taskLi.appendChild(taskDesc);
-  taskDesc.textContent = task.description;
+    // Add Task to LocalStorage
+    Storage.addTask(task);
 
-  taskLi.appendChild(delTaskbtn);
-  delTaskbtn.textContent = '🗑';
-}
-
-taskArr.forEach(addTasktoList);
+    // Clear fields
+    UI.clearFields();
+  }
+});

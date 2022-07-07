@@ -11,6 +11,3 @@ node_modules/
 .hintrc
 .stylelintrc.json
 .eslintrc.json
-
-#Ignore dist
-dist/
