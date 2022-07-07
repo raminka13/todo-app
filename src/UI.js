@@ -1,5 +1,5 @@
 import Storage from './Storage.js';
-import edit from './edit.js';
+import editTask from './edit.js';
 
 export default class UI {
   static displayTask() {
@@ -14,8 +14,11 @@ export default class UI {
     const taskLi = document.createElement('li');
 
     taskCtn.appendChild(taskLi);
-    taskLi.addEventListener('click', () => {
-      taskLi.classList.toggle('active');
+    taskLi.addEventListener('mouseover', () => {
+      taskLi.classList.add('active');
+    });
+    taskLi.addEventListener('mouseout', () => {
+      taskLi.classList.remove('active');
     });
     taskLi.className = 'task';
 
@@ -37,7 +40,7 @@ export default class UI {
     taskDesc.setAttribute('type', 'text');
     taskDesc.value = task.description;
     taskDesc.addEventListener('click', () => {
-      edit(taskDesc, task);
+      editTask(taskDesc, task);
     });
 
     taskLi.appendChild(delTaskbtn);

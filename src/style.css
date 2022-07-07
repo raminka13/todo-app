@@ -83,10 +83,11 @@ li.task {
   align-items: center;
   justify-content: space-between;
   border: 1px solid #d6d6d6;
+  transition: all 100ms ease;
 }
 
 li.task.active {
-  background-color: #aed4ff;
+  background-color: #d7e7f9;
 }
 
 input.task-desc {
@@ -103,7 +104,8 @@ input.task-desc {
   border: none;
   cursor: pointer;
   margin-right: 20px;
-  background-color: #fff;
+  background-color: transparent;
+  transition: all 100ms ease;
 }
 
 .remove-btn:hover {
