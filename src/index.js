@@ -10,7 +10,7 @@ document.querySelector('#form-section').addEventListener('submit', (e) => {
   e.preventDefault();
 
   const description = document.getElementById('add-input').value;
-  const completed = document.createElement('input').checked;
+  const completed = false;
   const taskId = Storage.getTask().length + 1;
 
   // Validation
@@ -29,11 +29,4 @@ document.querySelector('#form-section').addEventListener('submit', (e) => {
     // Clear fields
     UI.clearFields();
   }
-});
-
-document.querySelector('#task-list').addEventListener('click', (e) => {
-  // Remove Task from Storage
-  UI.deleteTask(e.target);
-  Storage.removeTask(e.target.parentElement.firstChild.textContent);
-  UI.displayTask();
 });

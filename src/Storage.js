@@ -21,12 +21,12 @@ export default class Storage {
 
   static removeTask(iD) {
     const taskArr = Storage.getTask();
-    const index = iD - 1;
-    if (index === 0) {
-      taskArr.splice(0, 1);
-    } else {
-      taskArr.splice(index, 1);
-    }
+    taskArr.forEach((task, index) => {
+      if (task.taskId === Number(iD)) {
+        taskArr.splice(index, 1);
+      }
+    });
+
     localStorage.setItem('taskArr', JSON.stringify(taskArr));
   }
 }

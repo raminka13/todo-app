@@ -3,6 +3,7 @@ import Storage from './Storage.js';
 export default class UI {
   static displayTask() {
     const taskArr = Storage.getTask();
+
     Storage.updateIds();
     taskArr.forEach((task) => UI.addTasktoList(task));
   }
@@ -28,18 +29,25 @@ export default class UI {
     checkBox.checked = task.completed;
 
     taskLi.appendChild(taskDesc);
+    taskDesc.className = 'task-desc';
     taskDesc.setAttribute('type', 'text');
     taskDesc.value = task.description;
 
     taskLi.appendChild(delTaskbtn);
     delTaskbtn.textContent = '⋮';
     delTaskbtn.className = 'remove-btn';
+    delTaskbtn.addEventListener('click', (e) => {
+      // Remove Task from Storage
+      Storage.removeTask(e.target.parentElement.firstChild.textContent);
+      UI.deleteTask();
+    });
   }
 
-  static deleteTask(el) {
-    if (el.classList.contains('remove-btn')) {
-      el.parentElement.parentElement.remove();
-    }
+  static deleteTask() {
+    const taskConta = document.getElementById('task-list');
+    taskConta.innerText = '';
+    Storage.updateIds();
+    UI.displayTask();
   }
 
   static clearFields() {
