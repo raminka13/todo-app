@@ -1,5 +1,5 @@
 import Storage from './Storage.js';
-import editTask from './edit.js';
+import Edit from './edit.js';
 
 export default class UI {
   static displayTask() {
@@ -34,13 +34,16 @@ export default class UI {
     checkBox.className = 'checkbox';
     checkBox.setAttribute('type', 'checkbox');
     checkBox.checked = task.completed;
+    checkBox.addEventListener('change', (e) => {
+      Edit.editCheck(e.target, task);
+    });
 
     taskLi.appendChild(taskDesc);
     taskDesc.className = 'task-desc';
     taskDesc.setAttribute('type', 'text');
     taskDesc.value = task.description;
     taskDesc.addEventListener('click', () => {
-      editTask(taskDesc, task);
+      Edit.editTask(taskDesc, task);
     });
 
     taskLi.appendChild(delTaskbtn);
