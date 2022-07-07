@@ -1,4 +1,5 @@
 import Storage from './Storage.js';
+import edit from './edit.js';
 
 export default class UI {
   static displayTask() {
@@ -13,6 +14,9 @@ export default class UI {
     const taskLi = document.createElement('li');
 
     taskCtn.appendChild(taskLi);
+    taskLi.addEventListener('click', () => {
+      taskLi.classList.toggle('active');
+    });
     taskLi.className = 'task';
 
     const indexBox = document.createElement('h4');
@@ -32,9 +36,12 @@ export default class UI {
     taskDesc.className = 'task-desc';
     taskDesc.setAttribute('type', 'text');
     taskDesc.value = task.description;
+    taskDesc.addEventListener('click', () => {
+      edit(taskDesc, task);
+    });
 
     taskLi.appendChild(delTaskbtn);
-    delTaskbtn.textContent = '⋮';
+    delTaskbtn.textContent = '🗑';
     delTaskbtn.className = 'remove-btn';
     delTaskbtn.addEventListener('click', (e) => {
       // Remove Task from Storage
