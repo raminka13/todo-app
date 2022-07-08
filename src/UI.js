@@ -14,12 +14,6 @@ export default class UI {
     const taskLi = document.createElement('li');
 
     taskCtn.appendChild(taskLi);
-    // taskLi.addEventListener('mouseover', () => {
-    //   taskLi.classList.add('active');
-    // });
-    // taskLi.addEventListener('mouseout', () => {
-    //   taskLi.classList.remove('active');
-    // });
     taskLi.className = 'task';
 
     const indexBox = document.createElement('h4');
@@ -57,6 +51,7 @@ export default class UI {
     delTaskbtn.addEventListener('click', (e) => {
       // Remove Task from Storage
       Storage.removeTask(e.target.parentElement.firstChild.textContent);
+      UI.showAlert('Task Deleted', 'danger');
       UI.deleteTask();
     });
   }
@@ -70,5 +65,16 @@ export default class UI {
 
   static clearFields() {
     document.getElementById('add-input').value = '';
+  }
+
+  static showAlert(message, className) {
+    const div = document.createElement('div');
+    div.className = `alert alert-${className}`;
+    div.appendChild(document.createTextNode(message));
+    const container = document.getElementById('app-container');
+    const form = document.getElementById('app-header');
+    container.insertBefore(div, form);
+
+    setTimeout(() => document.querySelector('.alert').remove(), 1000);
   }
 }

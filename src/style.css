@@ -21,6 +21,25 @@ body {
   align-items: center;
 }
 
+.alert {
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.alert-danger {
+  background-color: #731010;
+  color: #fff;
+}
+
+.alert-success {
+  background-color: #24a378;
+  color: #fff;
+}
+
 #app-container {
   width: 50%;
   max-width: 600px;
