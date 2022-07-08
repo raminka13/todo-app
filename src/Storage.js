@@ -21,6 +21,7 @@ export default class Storage {
 
   static removeTask(iD) {
     const taskArr = Storage.getTask();
+
     taskArr.forEach((task, index) => {
       if (task.taskId === Number(iD)) {
         taskArr.splice(index, 1);
@@ -28,5 +29,19 @@ export default class Storage {
     });
 
     localStorage.setItem('taskArr', JSON.stringify(taskArr));
+  }
+
+  static clearComplete() {
+    let taskArr = Storage.getTask();
+    taskArr = taskArr.filter((task) => task.completed === false);
+    localStorage.setItem('taskArr', JSON.stringify(taskArr));
+    return taskArr;
+  }
+
+  static emptyArr() {
+    let taskArr = Storage.getTask();
+    taskArr = [];
+    localStorage.setItem('taskArr', JSON.stringify(taskArr));
+    return taskArr;
   }
 }

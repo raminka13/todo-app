@@ -30,3 +30,15 @@ document.querySelector('#form-section').addEventListener('submit', (e) => {
     UI.clearFields();
   }
 });
+
+const clearAll = document.getElementById('clear-all');
+const resetBtn = document.getElementById('reset-btn');
+clearAll.addEventListener('click', () => {
+  Storage.clearComplete();
+  UI.deleteTask();
+});
+
+resetBtn.addEventListener('click', () => {
+  Storage.emptyArr();
+  UI.deleteTask();
+});

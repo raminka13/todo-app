@@ -23,6 +23,18 @@ body {
   box-shadow: 0 2px 10px #b4b4b4;
 }
 
+#reset-btn {
+  margin-right: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 250ms ease;
+}
+
+#reset-btn:hover {
+  transform: scale(120%) rotate(180deg);
+  color: #731010;
+}
+
 div#app-header {
   width: 100%;
   display: flex;
@@ -42,12 +54,6 @@ div#app-header h4 {
   margin-left: 20px;
   font-weight: 600;
   font-size: 16px;
-}
-
-div#app-header span {
-  margin-right: 20px;
-  cursor: pointer;
-  font-size: 20px;
 }
 
 #form-section {
@@ -83,10 +89,19 @@ li.task {
   align-items: center;
   justify-content: space-between;
   border: 1px solid #d6d6d6;
+  transition: all 100ms ease;
 }
 
-li.task.active {
-  background-color: #aed4ff;
+li.task:hover {
+  background-color: #d7e7f9;
+}
+
+li.task.checked {
+  background-color: #fbd4dc;
+}
+
+li.task.checked input {
+  text-decoration: line-through;
 }
 
 input.task-desc {
@@ -103,7 +118,8 @@ input.task-desc {
   border: none;
   cursor: pointer;
   margin-right: 20px;
-  background-color: #fff;
+  background-color: transparent;
+  transition: all 100ms ease;
 }
 
 .remove-btn:hover {
@@ -124,4 +140,10 @@ input.task-desc {
   font-weight: 300;
   background-color: #ebebeb;
   border: 1px solid #d6d6d6;
+  transition: all 250ms ease-out;
+}
+
+#clear-all:hover {
+  color: #731010;
+  background-color: #f0e3e3;
 }

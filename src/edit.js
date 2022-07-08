@@ -1,11 +1,20 @@
 import Storage from './Storage.js';
 
-const taskArr = Storage.getTask();
-const edit = (taskDesc, task) => {
-  taskDesc.addEventListener('input', (e) => {
-    taskDesc.value = e.target.value;
-    taskArr[task.taskId - 1].description = taskDesc.value;
+export default class Edit {
+  static editTask = (taskDesc, task) => {
+    const taskArr = Storage.getTask();
+    taskDesc.addEventListener('input', (e) => {
+      taskDesc.value = e.target.value;
+      taskArr[task.taskId - 1].description = taskDesc.value;
+      localStorage.setItem('taskArr', JSON.stringify(taskArr));
+    });
+  };
+
+  static editCheck = (checkB, task) => {
+    const taskArr = Storage.getTask();
+
+    task.completed = checkB.checked;
+    taskArr[task.taskId - 1].completed = task.completed;
     localStorage.setItem('taskArr', JSON.stringify(taskArr));
-  });
-};
-export default edit;
+  }
+}
