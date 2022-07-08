@@ -31,12 +31,17 @@ export default class Storage {
     localStorage.setItem('taskArr', JSON.stringify(taskArr));
   }
 
-  // static removeAllcheck(el) {
-  //   const taskArr = Storage.getTask();
+  static clearComplete() {
+    let taskArr = Storage.getTask();
+    taskArr = taskArr.filter((task) => task.completed === false);
+    localStorage.setItem('taskArr', JSON.stringify(taskArr));
+    return taskArr;
+  }
 
-  //   if (el.completed === true) {
-  //     taskArr.splice(el.taskId - 1, 1);
-  //   }
-  //   localStorage.setItem('taskArr', JSON.stringify(taskArr));
-  // }
+  static emptyArr() {
+    let taskArr = Storage.getTask();
+    taskArr = [];
+    localStorage.setItem('taskArr', JSON.stringify(taskArr));
+    return taskArr;
+  }
 }

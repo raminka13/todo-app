@@ -32,11 +32,13 @@ document.querySelector('#form-section').addEventListener('submit', (e) => {
 });
 
 const clearAll = document.getElementById('clear-all');
-const taskArr = Storage.getTask();
-
+const resetBtn = document.getElementById('reset-btn');
 clearAll.addEventListener('click', () => {
-  const checkedTasks = taskArr.filter((task) => task.completed === false);
-  console.log(checkedTasks);
-  localStorage.setItem('taskArr', JSON.stringify(checkedTasks));
+  Storage.clearComplete();
+  UI.deleteTask();
+});
+
+resetBtn.addEventListener('click', () => {
+  Storage.emptyArr();
   UI.deleteTask();
 });

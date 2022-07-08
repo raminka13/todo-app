@@ -14,12 +14,12 @@ export default class UI {
     const taskLi = document.createElement('li');
 
     taskCtn.appendChild(taskLi);
-    taskLi.addEventListener('mouseover', () => {
-      taskLi.classList.add('active');
-    });
-    taskLi.addEventListener('mouseout', () => {
-      taskLi.classList.remove('active');
-    });
+    // taskLi.addEventListener('mouseover', () => {
+    //   taskLi.classList.add('active');
+    // });
+    // taskLi.addEventListener('mouseout', () => {
+    //   taskLi.classList.remove('active');
+    // });
     taskLi.className = 'task';
 
     const indexBox = document.createElement('h4');
@@ -35,6 +35,11 @@ export default class UI {
     checkBox.setAttribute('type', 'checkbox');
     checkBox.checked = task.completed;
     checkBox.addEventListener('change', (e) => {
+      if (checkBox.checked === true) {
+        checkBox.parentElement.classList.add('checked');
+      } else {
+        checkBox.parentElement.classList.remove('checked');
+      }
       Edit.editCheck(e.target, task);
     });
 
