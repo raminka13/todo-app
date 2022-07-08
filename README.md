@@ -2,6 +2,8 @@
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
+![](https://i.ibb.co/6FR4MKS/Screen-Shot-2022-07-08-at-9-53-15.png)
+
 # To Do List ⚙️
 > This is a To Do list App to practice Javascript and Webpack deployment.
 # Live Demo ⚙️
@@ -22,7 +24,7 @@
 ## Project Milestones
 - **Milestone 0 - project setup (0.5h)** ✅
 - **Milestone 1 - Add - Remove functions (1h)** ✅
-- **Milestone 2 - Dynamic content (5h)** 
+- **Milestone 2 - Dynamic content (5h)** ✅
 
 ## Show your support 🦾
 - Give a ⭐️ if you like this project!
