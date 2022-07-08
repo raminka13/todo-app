@@ -21,6 +21,7 @@ export default class Storage {
 
   static removeTask(iD) {
     const taskArr = Storage.getTask();
+
     taskArr.forEach((task, index) => {
       if (task.taskId === Number(iD)) {
         taskArr.splice(index, 1);
@@ -29,4 +30,13 @@ export default class Storage {
 
     localStorage.setItem('taskArr', JSON.stringify(taskArr));
   }
+
+  // static removeAllcheck(el) {
+  //   const taskArr = Storage.getTask();
+
+  //   if (el.completed === true) {
+  //     taskArr.splice(el.taskId - 1, 1);
+  //   }
+  //   localStorage.setItem('taskArr', JSON.stringify(taskArr));
+  // }
 }

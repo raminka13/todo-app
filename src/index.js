@@ -30,3 +30,13 @@ document.querySelector('#form-section').addEventListener('submit', (e) => {
     UI.clearFields();
   }
 });
+
+const clearAll = document.getElementById('clear-all');
+const taskArr = Storage.getTask();
+
+clearAll.addEventListener('click', () => {
+  const checkedTasks = taskArr.filter((task) => task.completed === false);
+  console.log(checkedTasks);
+  localStorage.setItem('taskArr', JSON.stringify(checkedTasks));
+  UI.deleteTask();
+});
