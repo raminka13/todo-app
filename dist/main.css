@@ -20,6 +20,32 @@ body {
   align-items: center;
 }
 
+input[type='checkbox'] {
+  cursor: pointer;
+  appearance: none;
+  background-color: #f2f2f2;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #333333;
+  border-radius: 3px;
+  transition: all 150ms ease-in-out;
+}
+
+input[type='checkbox']:hover {
+  background-color: #ffb9c0;
+  border: 2px solid #e63345;
+}
+
+input[type='checkbox']:checked {
+  cursor: pointer;
+  clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+  background-color: #e63345;
+  transform: scale(0.8);
+}
+
 .alert {
   height: 30px;
   width: 100%;
@@ -70,8 +96,8 @@ div#app-header {
 }
 
 li.task h4 {
-  font-size: 24px;
-  color: #ebebeb;
+  font-size: 45px;
+  color: #f7f7f7;
 }
 
 div#app-header h4 {
@@ -93,7 +119,7 @@ div#app-header h4 {
   border: none;
   padding-left: 20px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 #add-input::placeholder {
@@ -136,6 +162,10 @@ input.task-desc {
   padding-left: 10px;
   font-weight: 200;
   font-size: 16px;
+}
+
+input.task-desc:focus {
+  outline: none;
 }
 
 .remove-btn {
