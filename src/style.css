@@ -29,7 +29,7 @@ input[type='checkbox'] {
   color: currentColor;
   width: 16px;
   height: 16px;
-  border: 2px solid #333333;
+  border: 2px solid #333;
   border-radius: 3px;
   transition: all 150ms ease-in-out;
 }
@@ -71,7 +71,7 @@ input[type='checkbox']:checked {
   width: 50%;
   max-width: 600px;
   background-color: #fff;
-  box-shadow: 0 2px 12px #333333;
+  box-shadow: 0 2px 12px #333;
 }
 
 #reset-btn {
