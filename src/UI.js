@@ -28,6 +28,11 @@ export default class UI {
     checkBox.className = 'checkbox';
     checkBox.setAttribute('type', 'checkbox');
     checkBox.checked = task.completed;
+    if (checkBox.checked === true) {
+      checkBox.parentElement.classList.add('checked');
+    } else {
+      checkBox.parentElement.classList.remove('checked');
+    }
     checkBox.addEventListener('change', (e) => {
       if (checkBox.checked === true) {
         checkBox.parentElement.classList.add('checked');
