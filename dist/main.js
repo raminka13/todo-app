@@ -10,6 +10,7 @@ class Task {
     this.taskId = taskId;
   }
 }
+
 ;// CONCATENATED MODULE: ./src/Storage.js
 class Storage {
   static getTask() {
@@ -89,6 +90,20 @@ class UI {
 
     Storage.updateIds();
     taskArr.forEach((task) => UI.addTasktoList(task));
+  }
+
+  static displayFirstTask() {
+    let taskArrFirst = JSON.parse(localStorage.getItem('taskArrFirst')) || [
+      { description: 'Welcome to this', completed: false, taskId: 1 },
+      { description: 'Awesome App to save things TO DO', completed: false, taskId: 2 },
+      { description: 'Use it wisely', completed: false, taskId: 3 },
+      { description: 'Start by adding ToDo', completed: true, taskId: 4 },
+    ];
+
+    taskArrFirst.forEach((task) => UI.addTasktoList(task));
+    setTimeout(() => UI.deleteTask(), 3600);
+    taskArrFirst = [];
+    localStorage.setItem('taskArrFirst', JSON.stringify(taskArrFirst));
   }
 
   static addTasktoList(task) {
@@ -171,7 +186,7 @@ class UI {
 
 
 
-document.addEventListener('DOMContentLoaded', UI.displayTask);
+document.addEventListener('DOMContentLoaded', UI.displayFirstTask);
 
 document.querySelector('#form-section').addEventListener('submit', (e) => {
   // Prevent submit

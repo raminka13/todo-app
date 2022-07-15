@@ -3,7 +3,7 @@ import Task from './TaskClass.js';
 import UI from './UI.js';
 import Storage from './Storage.js';
 
-document.addEventListener('DOMContentLoaded', UI.displayTask);
+document.addEventListener('DOMContentLoaded', UI.displayFirstTask);
 
 document.querySelector('#form-section').addEventListener('submit', (e) => {
   // Prevent submit
