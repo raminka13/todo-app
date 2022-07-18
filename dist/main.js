@@ -10,7 +10,6 @@ class Task {
     this.taskId = taskId;
   }
 }
-
 ;// CONCATENATED MODULE: ./src/Storage.js
 class Storage {
   static getTask() {
@@ -87,7 +86,6 @@ class Edit {
 class UI {
   static displayTask() {
     const taskArr = Storage.getTask();
-
     Storage.updateIds();
     taskArr.forEach((task) => UI.addTasktoList(task));
   }
@@ -100,8 +98,10 @@ class UI {
       { description: 'Start by adding ToDo', completed: true, taskId: 4 },
     ];
 
+    UI.displayTask();
     taskArrFirst.forEach((task) => UI.addTasktoList(task));
     setTimeout(() => UI.deleteTask(), 3600);
+    UI.showAlert('Tasks Loaded', 'success', 3600);
     taskArrFirst = [];
     localStorage.setItem('taskArrFirst', JSON.stringify(taskArrFirst));
   }
@@ -127,8 +127,10 @@ class UI {
     checkBox.checked = task.completed;
     if (checkBox.checked === true) {
       checkBox.parentElement.classList.add('checked');
+      checkBox.parentElement.firstChild.classList.add('checked');
     } else {
       checkBox.parentElement.classList.remove('checked');
+      checkBox.parentElement.firstChild.classList.remove('checked');
     }
     checkBox.addEventListener('change', (e) => {
       if (checkBox.checked === true) {
@@ -153,7 +155,7 @@ class UI {
     delTaskbtn.addEventListener('click', (e) => {
       // Remove Task from Storage
       Storage.removeTask(e.target.parentElement.firstChild.textContent);
-      UI.showAlert('Task Deleted', 'danger');
+      UI.showAlert('Task Deleted', 'danger', 1500);
       UI.deleteTask();
     });
   }
@@ -169,7 +171,7 @@ class UI {
     document.getElementById('add-input').value = '';
   }
 
-  static showAlert(message, className) {
+  static showAlert(message, className, timeOut) {
     const div = document.createElement('div');
     div.className = `alert alert-${className}`;
     div.appendChild(document.createTextNode(message));
@@ -177,7 +179,7 @@ class UI {
     const form = document.getElementById('app-header');
     container.insertBefore(div, form);
 
-    setTimeout(() => document.querySelector('.alert').remove(), 1000);
+    setTimeout(() => document.querySelector('.alert').remove(), timeOut);
   }
 }
 ;// CONCATENATED MODULE: ./src/index.js
@@ -198,14 +200,14 @@ document.querySelector('#form-section').addEventListener('submit', (e) => {
 
   // Validation
   if (description === '') {
-    UI.showAlert('Please fill in all fields', 'danger');
+    UI.showAlert('Please fill in all fields', 'danger', 1500);
   } else {
     // Start a new Task
     const task = new Task(description, completed, taskId);
 
     // Add Task to UI
     UI.addTasktoList(task);
-    UI.showAlert('Task Added', 'success');
+    UI.showAlert('Task Added', 'success', 1500);
 
     // Add Task to LocalStorage
     Storage.addTask(task);
@@ -219,13 +221,13 @@ const clearAll = document.getElementById('clear-all');
 const resetBtn = document.getElementById('reset-btn');
 clearAll.addEventListener('click', () => {
   Storage.clearComplete();
-  UI.showAlert('Tasks Deleted', 'danger');
+  UI.showAlert('Tasks Deleted', 'danger', 1500);
   UI.deleteTask();
 });
 
 resetBtn.addEventListener('click', () => {
   Storage.emptyArr();
-  UI.showAlert('All Tasks Deleted', 'danger');
+  UI.showAlert('All Tasks Deleted', 'danger', 1500);
   UI.deleteTask();
 });
 

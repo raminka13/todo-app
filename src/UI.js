@@ -4,7 +4,6 @@ import Edit from './edit.js';
 export default class UI {
   static displayTask() {
     const taskArr = Storage.getTask();
-
     Storage.updateIds();
     taskArr.forEach((task) => UI.addTasktoList(task));
   }
@@ -17,8 +16,10 @@ export default class UI {
       { description: 'Start by adding ToDo', completed: true, taskId: 4 },
     ];
 
+    UI.displayTask();
     taskArrFirst.forEach((task) => UI.addTasktoList(task));
     setTimeout(() => UI.deleteTask(), 3600);
+    UI.showAlert('Tasks Loaded', 'success', 3600);
     taskArrFirst = [];
     localStorage.setItem('taskArrFirst', JSON.stringify(taskArrFirst));
   }
@@ -44,8 +45,10 @@ export default class UI {
     checkBox.checked = task.completed;
     if (checkBox.checked === true) {
       checkBox.parentElement.classList.add('checked');
+      checkBox.parentElement.firstChild.classList.add('checked');
     } else {
       checkBox.parentElement.classList.remove('checked');
+      checkBox.parentElement.firstChild.classList.remove('checked');
     }
     checkBox.addEventListener('change', (e) => {
       if (checkBox.checked === true) {
@@ -70,7 +73,7 @@ export default class UI {
     delTaskbtn.addEventListener('click', (e) => {
       // Remove Task from Storage
       Storage.removeTask(e.target.parentElement.firstChild.textContent);
-      UI.showAlert('Task Deleted', 'danger');
+      UI.showAlert('Task Deleted', 'danger', 1500);
       UI.deleteTask();
     });
   }
@@ -86,7 +89,7 @@ export default class UI {
     document.getElementById('add-input').value = '';
   }
 
-  static showAlert(message, className) {
+  static showAlert(message, className, timeOut) {
     const div = document.createElement('div');
     div.className = `alert alert-${className}`;
     div.appendChild(document.createTextNode(message));
@@ -94,6 +97,6 @@ export default class UI {
     const form = document.getElementById('app-header');
     container.insertBefore(div, form);
 
-    setTimeout(() => document.querySelector('.alert').remove(), 1000);
+    setTimeout(() => document.querySelector('.alert').remove(), timeOut);
   }
 }

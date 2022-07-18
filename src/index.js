@@ -15,14 +15,14 @@ document.querySelector('#form-section').addEventListener('submit', (e) => {
 
   // Validation
   if (description === '') {
-    UI.showAlert('Please fill in all fields', 'danger');
+    UI.showAlert('Please fill in all fields', 'danger', 1500);
   } else {
     // Start a new Task
     const task = new Task(description, completed, taskId);
 
     // Add Task to UI
     UI.addTasktoList(task);
-    UI.showAlert('Task Added', 'success');
+    UI.showAlert('Task Added', 'success', 1500);
 
     // Add Task to LocalStorage
     Storage.addTask(task);
@@ -36,12 +36,12 @@ const clearAll = document.getElementById('clear-all');
 const resetBtn = document.getElementById('reset-btn');
 clearAll.addEventListener('click', () => {
   Storage.clearComplete();
-  UI.showAlert('Tasks Deleted', 'danger');
+  UI.showAlert('Tasks Deleted', 'danger', 1500);
   UI.deleteTask();
 });
 
 resetBtn.addEventListener('click', () => {
   Storage.emptyArr();
-  UI.showAlert('All Tasks Deleted', 'danger');
+  UI.showAlert('All Tasks Deleted', 'danger', 1500);
   UI.deleteTask();
 });

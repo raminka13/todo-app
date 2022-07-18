@@ -27,8 +27,8 @@ input[type='checkbox'] {
   margin: 0;
   font: inherit;
   color: currentColor;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border: 2px solid #333;
   border-radius: 3px;
   transition: all 150ms ease-in-out;
@@ -43,7 +43,7 @@ input[type='checkbox']:checked {
   cursor: pointer;
   clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
   background-color: #67dd5c;
-  transform: scale(0.8);
+  transform: scale(1.2);
   border: none;
 }
 
@@ -69,9 +69,12 @@ input[type='checkbox']:checked {
 
 #app-container {
   width: 50%;
+  position: sticky;
+  top: 0;
   max-width: 600px;
   background-color: #fff;
   box-shadow: 0 2px 12px #333;
+  height: fit-content;
 }
 
 #reset-btn {
@@ -99,6 +102,11 @@ div#app-header {
 li.task h4 {
   font-size: 45px;
   color: #f7f7f7;
+  font-weight: 600;
+}
+
+li.task.checked h4 {
+  color: #4ebc44;
 }
 
 div#app-header h4 {
@@ -163,7 +171,7 @@ input.task-desc {
   height: 80%;
   border: none;
   padding-left: 10px;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 16px;
 }
 
@@ -194,7 +202,7 @@ input.task-desc:focus {
   text-align: center;
   color: #929292;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 400;
   background-color: #ebebeb;
   border: 1px solid #d6d6d6;
   transition: all 250ms ease-out;
